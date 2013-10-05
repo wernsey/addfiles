@@ -16,6 +16,6 @@ In order to use this application, you need to have Tkinter (the Python
 Tk bindings) and the Python Imaging Library (ImageTk) installed.  On my
 Linux Mint machine it was as simple as typing:
 
-$ sudo apt-get install python-tk python-imaging-tk
+    $ sudo apt-get install python-tk python-imaging-tk
 
 See the file help.txt for a user guide.

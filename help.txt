@@ -1,0 +1,213 @@
+AddFiles 3 (PyAddfiles) Manual
+
+--------------------------------------------------------------------------------
+
+Introduction
+
+============
+
+AddFiles is a simple utility for grouping photographs or other images together. 
+It stores the groupings in a simple XML file that can be read by other applications.
+
+Its main purpose is to allow you to create an HTML slideshow from these groups of 
+images that can be viewed in a web browser.
+
+It also has some basic image manipulation functionality, sucha as the ability to 
+resize images to fit into the browser window.
+
+This is version 3 and was written using Python and Tkinter. There was an older 
+version 2 written in Visual Basic. Version 1 was a very simple C program that
+was very different from the current version.
+
+--------------------------------------------------------------------------------
+
+The Main Window
+
+===============
+
+The main window is divided into four areas:
+
+1) The top-left area is the "File View" that shows image files in the current directory.
+
+2) The top-right area is the "Preview" that shows the currently selected image.
+
+3) The bottom-left area is the "Group view" that shows the currently selected group.
+
+4) The bottom-right is the "Groups view" that shows a list of groups.
+
+--------------------------------------------------------------------------------
+
+Groups
+
+======
+
+The main premise of AddFiles is that all your images are collected into groups. 
+
+Groups are shown in the "Groups"-list in the bottom right hand side of the main 
+Window. When the program starts up initially there is only one group named "Default". 
+
+To the right of the "Groups"-list is an "Add", "Remove" and "Rename" button.
+
+You can add more groups by clicking the "Add" button.
+
+You can remove groups by selecting them in the list and clicking the "Remove" button.
+
+You can rename a group by selecting it in the list and clicking the "Rename" button.
+
+Clicking the button labled "Up" to the left of the 'Groups' list moves the currently
+selected groups up one position. Likewise, the button labled "Down" will move the
+selected groups down one position.
+
+--------------------------------------------------------------------------------
+
+Files and Directories
+
+=====================
+
+In the top left corner of the main window is the current directory view, which 
+consists of a button showing the current directory and a list with all the image
+files in that directory.
+
+Clicking on the directory button shows a dialog that allows you to choose a new
+directory. The file list will be updated accordingly.
+
+Selecting an image file in the list shows it in the "Preview" view.
+
+--------------------------------------------------------------------------------
+
+Group
+
+=====
+
+Below the directory view is the view of the current group. It contains a list of 
+all the images in the current group and a couple of buttons.
+
+Clicing the "Add" button above the list will add all files selected in the file
+view to the current group.
+
+Clicking the "Remove" button will remove all the files selected in the current group
+view from the group.
+
+Clicking the button labled "Up" to the right of the list moves the currently
+selected files up one position. Likewise, the button labled "Down" will move the
+selected files down one position.
+
+Below the list are two buttons with a label 'Thumbnail'. The one to the left is 
+used to set the image that is currently shown in the "Preview" as the thumbnail 
+for the current group. It will display the name of the thumbnail file if one is
+selected, otherwise it is labeled "None" if the group does not have a thumbnail
+assigned. 
+
+The other button is labled "Clear" and will unassign any thumbnail assigned to the
+current group.
+
+Thumbnails are generated from these images for the index.html file.
+
+--------------------------------------------------------------------------------
+
+Projects
+
+========
+
+Save your project by clicking on the "File" -> "Save" or "File" -> "Save As" 
+menus. The first time you save or if you click "Save As" will prompt you for
+a filename. The project can be opened at a later stage by clicking on the 
+"File" -> "Open" menu and selecting the previously saved file.
+
+You can start a new project by clicking on the "File" -> "New" menu.
+
+--------------------------------------------------------------------------------
+
+Image Manipulation
+
+==================
+
+The program allows some manipulation of image files.
+
+To the left of the "Preview" window are two buttons labled "Left" and "Right".
+Clicking the "Left" button will rotate the currently previewed image 90 degrees 
+counter clockwise. The "Right" button will rotate the image 90 degrees clockwise.
+
+Below the preview window is a label showing the current size of the image in the
+form "width x height". Next to it is a button "Resize to Fit" with two text 
+boxes next to it: The one to the left is for the 'resize width' and to the right 
+is for the 'resize height'. Clicking the "Resize to Fit" button will stretch or 
+shrink the image to fit between the 'resize width' and the 'resize height'.
+
+The aspect ratio of the image is maintained.
+
+The "Resize to Fit" button will be highlighted in red if the current image's 
+dimensions are is larger than the 'resize width' or 'resize height'.
+
+Backups are always saved as the name of the original file appended with a '~'. 
+Thus the backup of 'myphoto.jpg' is saved as 'myphoto.jpg~'. If a backup already
+exists for a photo it will not be overwritten on the assumption that the existing
+backup of the file is the original.
+
+The "Tools" -> "Remove Backups" menu will delete all backup files in the current
+directory.
+
+--------------------------------------------------------------------------------
+
+HTML Output
+
+===========
+
+Click on the "File" -> "Generate HTML" menu. You will be given a dialog wherein 
+you should choose a folder where the HTML output should be placed. Clicking "OK"
+wil result in an HTML slideshow being generated.
+
+Each slide in the slideshow is a single photo in an HTML page with links to the 
+next and previous photos in the group and next and previous groups in the series.
+
+An 'index.html' file will also be generated that shows either the names or the 
+thumbnails of all the groups in the series for easy access. Each slide also 
+contains a link to get back to the 'index.html' file.
+
+--------------------------------------------------------------------------------
+
+Configuration
+
+=============
+
+Click "File" -> "Configuration". This will bring up a dialog containing some 
+configuration options.
+
+You can set the default values of the 'resize width' and the 'resize height'
+text fields here.
+
+You can set the width and height of the thumbnails in the 'index.html' file, as
+well as the number of thumbnails per row in 'index.html'.
+
+You can set the values of the BGCOLOR (background colour), TEXT (text colour),
+LINK (link text colour) and VLINK (visited link text colour) attributes of the
+generated HTML as well. Clicking the buttons labled "..." next to each colour
+brings up a dialog for choosing the colour.
+
+--------------------------------------------------------------------------------
+
+"Tools" menu
+
+============
+
+Under the tools menu
+1a) Filter - Files that have been assigned to groups are removed from the "File View"
+	so that the "File View" becomes less cluttered if you have to sift through 
+	lots of files.
+1b) unFilter - Disables the filtering. All files are shown in the "File View"
+2) Remove Backups - When files are manipulated, the original is saved as its filename
+	followed by a '~'. For example "foo.jpg", becomes "foo.jpg~". If a backup
+	already exists, it won't be overwritten, ensuring that the backup file is always
+	the original.
+3) Wipe Groups - Deletes a group, and the files in it. The files are backed up before
+	they're deleted, as described above.
+4) Statistics - Presents statistics about the project: The number of groups and
+	the number of images among those groups.
+
+--------------------------------------------------------------------------------
+
+Bugs and Issues
+
+===============
+
+Please send all bugs or patches or feature requests to wstoop@gmail.com
