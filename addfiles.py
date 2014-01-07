@@ -1225,7 +1225,6 @@ class Application(Frame):
 			
 		self.refreshGroupView()
 		
-		print "filterOn: %s" % (self.filterOn,)
 		if self.filterOn:
 			#self.filter()
 			indices.reverse() # guess why...
