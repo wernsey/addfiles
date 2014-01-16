@@ -1471,16 +1471,19 @@ class Application(Frame):
 		adj = 0 # Trick to remove the correct indices
 		for index in indices:			
 			g = getGroup(self.grouplist.get(index))
-			for im in g.getImages():				
-				src = im.getPath()
-				dest = "%s~" %(src,)
-				if os.path.exists(dest):
-					print "Backup %s exists" % (dest,)
-				else:
-					shutil.move(src,dest)
+			for im in g.getImages():		
+				try:
+					src = im.getPath()
+					dest = "%s~" %(src,)
+					if os.path.exists(dest):
+						print "Backup %s exists" % (dest,)
+					else:
+						shutil.move(src,dest)
+				except IOError:
+					print "Unable to backup %s" %(src,)					
 					
 				self.untrackFile(im.getPath())
-						
+				
 			removeGroup(int(index) + adj)
 			adj = adj - 1
 			
